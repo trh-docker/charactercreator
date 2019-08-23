@@ -33,10 +33,11 @@ COPY --from=build-env-go110 /opt/src/src/github.com/mholt/caddy/caddy/caddy /opt
 
 WORKDIR /opt/tricll/charactercreator/
 
-RUN yarn install
+RUN yarn install && mkdir -p /opt/tlm
 
 ADD https://raw.githubusercontent.com/adbegon/pub/master/AdfreeZoneSSL.crt /usr/local/share/ca-certificates/
 ADD files/bash/caddy_entry.sh /opt/bin/entry.sh
+ADD files/caddy/Caddyfile /opt/tlm/Caddyfile
 RUN update-ca-certificates --verbose &&\
     chmod +x /opt/bin/caddy &&\
     ln -s /opt/bin/caddy /bin/caddy &&\
@@ -46,5 +47,5 @@ RUN update-ca-certificates --verbose &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
 EXPOSE 80
-
+CMD [ "/bin/entry.sh" ]
 
