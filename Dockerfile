@@ -5,13 +5,13 @@ ADD files/caddy_mods/run.go.txt /tmp/run.go
 ADD files/caddy_mods/go.mod.txt /tmp/go.mod
 
 RUN apt-get update && apt-get install -y gcc &&\
-    go get github.com/caddy/caddy
+    go get github.com/caddyserver/caddy
 
 ENV GO111MODULE=on
 RUN cd caddy &&\
-    cp /tmp/run.go ${GOPATH}/src/github.com/mholt/caddy/caddy/caddymain/ &&\
-    cp /tmp/caddyhttp.go ${GOPATH}/src/github.com/mholt/caddy/caddyhttp/ &&\
-    cp /tmp/go.mod ${GOPATH}/src/github.com/mholt/caddy/go.mod &&\
+    cp /tmp/run.go ${GOPATH}/src/github.com/caddyserver/caddy/caddy/caddymain/ &&\
+    cp /tmp/caddyhttp.go ${GOPATH}/src/github.com/caddyserver/caddy/caddyhttp/ &&\
+    cp /tmp/go.mod ${GOPATH}/src/github.com/caddyserver/caddy/go.mod &&\
     go mod tidy
 # ENV GO111MODULE=off
 RUN git clone https://github.com/mholt/certmagic.git
