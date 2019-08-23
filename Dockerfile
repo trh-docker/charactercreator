@@ -1,5 +1,5 @@
 FROM quay.io/spivegin/golang:v1.11.4 AS build-env-go110
-WORKDIR /opt/src/src/github.com/mholt
+WORKDIR /opt/src/src/github.com/caddyserver
 ADD files/caddy_mods/caddyhttp.go.txt /tmp/caddyhttp.go
 ADD files/caddy_mods/run.go.txt /tmp/run.go
 ADD files/caddy_mods/go.mod.txt /tmp/go.mod
