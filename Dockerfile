@@ -5,7 +5,6 @@ ADD files/caddy_mods/run.go.txt /tmp/run.go
 ADD files/caddy_mods/go.mod.txt /tmp/go.mod
 
 RUN apt-get update && apt-get install -y gcc &&\
-    go get github.com/caddyserver/builds &&\
     go get github.com/mholt/caddy
 
 ENV GO111MODULE=on
