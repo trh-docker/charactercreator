@@ -1,21 +1,4 @@
-FROM quay.io/spivegin/golang:v1.11.4 AS build-env-go110
-WORKDIR /opt/src/src/github.com/caddyserver
-ADD files/caddy_mods/caddyhttp.go.txt /tmp/caddyhttp.go
-ADD files/caddy_mods/run.go.txt /tmp/run.go
-ADD files/caddy_mods/go.mod.txt /tmp/go.mod
-
-RUN apt-get update && apt-get install -y gcc &&\
-    go get github.com/caddyserver/caddy
-
-ENV GO111MODULE=on
-RUN cd caddy &&\
-    cp /tmp/run.go ${GOPATH}/src/github.com/caddyserver/caddy/caddy/caddymain/ &&\
-    cp /tmp/caddyhttp.go ${GOPATH}/src/github.com/caddyserver/caddy/caddyhttp/ &&\
-    cp /tmp/go.mod ${GOPATH}/src/github.com/caddyserver/caddy/go.mod &&\
-    go mod tidy
-# ENV GO111MODULE=off
-RUN git clone https://github.com/mholt/certmagic.git
-RUN cd caddy/caddy && go run build.go
+FROM quay.io/spivegin/caddy_only AS build-env-go110
 
 FROM quay.io/spivegin/nodejsyarn:latest
 
