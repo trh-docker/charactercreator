@@ -1,4 +1,10 @@
 0.0.0.0:80 {
     tls off
-    root /opt/tricll/charactercreator/target/
+    proxy / localhost:3000 {
+        header_upstream Host {host}
+        header_upstream X-Real-IP {remote}
+        header_upstream X-Forwarded-For {remote}
+        header_upstream X-Forwarded-Port {server_port}
+        header_upstream X-Forwarded-Proto {scheme}
+    }
 }
