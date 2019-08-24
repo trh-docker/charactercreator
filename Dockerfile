@@ -24,7 +24,6 @@ RUN update-ca-certificates --verbose &&\
     chmod +x /opt/bin/caddy &&\
     ln -s /opt/bin/caddy /bin/caddy &&\
     chmod +x /opt/bin/entry.sh &&\
-    dpkg -i /tmp/dumb-init_amd64.deb && \
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
