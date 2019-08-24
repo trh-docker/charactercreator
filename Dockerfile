@@ -15,7 +15,7 @@ COPY --from=build-env-go110 /opt/bin/caddy /opt/bin/caddy
 
 WORKDIR /opt/tricll/charactercreator/
 
-RUN npm insall glup && npm install && mkdir -p /opt/tlm
+RUN npm install glup && npm install && mkdir -p /opt/tlm
 
 ADD https://raw.githubusercontent.com/adbegon/pub/master/AdfreeZoneSSL.crt /usr/local/share/ca-certificates/
 ADD files/bash/caddy_entry.sh /opt/bin/entry.sh
