@@ -1,4 +1,4 @@
 0.0.0.0:80 {
     tls off
-    root . /opt/tricll/charactercreator/
+    root /opt/tricll/charactercreator/
 }
