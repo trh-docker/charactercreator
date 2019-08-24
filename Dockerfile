@@ -10,7 +10,7 @@ RUN echo "deb https://apache.bintray.com/couchdb-deb stretch main" > /etc/apt/so
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 ADD . /opt/tricll/charactercreator/
 RUN mkdir /opt/bin 
-COPY --from=build-env-go110 /opt/src/src/github.com/mholt/caddy/caddy/caddy /opt/bin/caddy
+COPY --from=build-env-go110 /opt/bin/caddy /opt/bin/caddy
 
 
 WORKDIR /opt/tricll/charactercreator/
