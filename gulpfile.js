@@ -58,14 +58,14 @@ gulp.task('default',function() {
 
 gulp.task('browser-sync', function() {
     var proxyOptionsSession = {
-        target: 'http://localhost:5984',
+        target: 'http://couchdb:5984',
         pathRewrite: {
             '^/api/session': '/_session'
         }
     }
 
     var proxyOptionsUsers = {
-        target: 'http://localhost:5984',
+        target: 'http://couchdb:5984',
         pathRewrite: function (path, req) {
             return path === '/api/users' ? '/_users' : path.replace(/^\/api\/users\//, '/_users/org.couchdb.user:')
         }
